@@ -1,0 +1,28 @@
+{
+  "name": "__MSG_extensionName__",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"]
+  }],
+  "default_locale": "en_US",
+  "description": "__MSG_extensionDescription__",
+  "homepage_url": "https://github.com/ao5357/development_favicon",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png",
+    "256": "icons/icon256.png"
+  },
+  "manifest_version": 2,
+  "options_page": "options/index.html",
+  "permissions": [
+    "storage",
+    "tabs",
+    "<all_urls>"
+  ],
+  "version": "0.1.1"
+}

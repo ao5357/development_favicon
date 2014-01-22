@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Development Favicon settings</title>
+  <link id="favicon" rel="icon" type="image/png" href="deps/settings-favicon.png" />
+  <meta name="MobileOptimized" content="width" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <link type="text/css" rel="stylesheet" href="deps/styles.css" media="all" />
+</head><body>
+  <div class="page">
+    <header>
+      <h1>Development Favicon settings</h1>
+    </header>
+    <section>
+      <h3>Pattern Matching</h3>
+      <div>
+        <form></form>
+        <button id="add-row">Add row</button>
+      </div>
+    </section>
+    <section>
+      <h3>Help</h3>
+      <div>
+        <h4>Regex Pattern</h4>
+        <p>
+          Regex stands for "Regular Expressions", which is a means to match stuff. There are different <em>flavors</em> 
+          of regular expression, and this extension uses the JavaScript one. I recommend trying out your patterns at
+          <a href="http://regexpal.com/" target="_blank">RegexPal</a>.
+        </p>
+        <p>
+          The <strong>quick things</strong> to know about regex match patterns are:
+        </p>
+        <ul>
+          <li>The patterns have to match the URL of the tab to be applied</li>
+          <li><code>.*</code> matches anything, so you usually want to start and end your pattern with it</li>
+          <li>The dots and slashes in patterns have to be escaped, by preceding them with a backslash (ie. <code>http:\/\/</code>)</li>
+          <li>You can <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Special_characters_meaning_in_regular_expressions" target="_blank">do a lot with regular expressions</a>. That's why we use them</li>
+        </ul>
+        <h4>Effect</h4>
+        <p>Effects are the way the favicon gets modified:</p>
+        <ul>
+          <li><strong>top</strong>: puts a colored stripe over the top quarter</li>
+          <li><strong>right</strong>: puts a colored stripe over the right quarter</li>
+          <li><strong>bottom</strong>: puts a colored stripe over the bottom quarter</li>
+          <li><strong>left</strong>: puts a colored stripe over the left quarter</li>
+          <li><strong>cover</strong>: covers the whole area in semi-transparent color</li>
+          <li><strong>replace</strong>: replaces non-transparent parts of the icon with color</li>
+          <li><strong>background</strong>: color fill of the whole area behind the icon</li>
+          <li><strong>xor-top</strong>: like 'top', but whites out what gets covered</li>
+        </ul>
+        <h4>Color</h4>
+        <p>The color used by the applied effect (see above).</p>
+        <h4>Ordering</h4>
+        <p>The first (in the list) pattern that matches gets applied. You can drag-and-drop to re-order the rows above to give them priority.</p>
+      </div>
+    </section>
+    <section class="attribution">
+      <h3>Attribution</h3>
+      <div>
+        <a href="http://www.commercialprogression.com/" target="_blank">
+          <img src="deps/commercial-progression.png" alt="" />A side project brought to you by Commercial Progression
+        </a>.
+      </div>
+    </section>
+  </div>
+  <script src="deps/behaviors.js"></script>
+</body></html>
