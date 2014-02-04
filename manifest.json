@@ -1,4 +1,5 @@
 {
+  "author": "Commercial Progression",
   "name": "__MSG_extensionName__",
   "background": {
     "scripts": ["background.js"],
@@ -24,5 +25,6 @@
     "tabs",
     "<all_urls>"
   ],
-  "version": "0.1.1"
+  "short_name": "devicon",
+  "version": "1.0.0"
 }
