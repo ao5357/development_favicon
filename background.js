@@ -60,9 +60,10 @@ document.addEventListener("patternmatch", function(evt) {
     }
 
     // Pass the icon to the content script.
-    chrome.tabs.sendMessage(tabId, {
-      "favIconUrl": canvas.toDataURL()
-    });
+    chrome.tabs.executeScript(null, {file:'library/favicon.js'});
+    
+    if(typeof favicon != undefined)
+      chrome.tabs.executeScript(null, {code:'favicon.change("' + canvas.toDataURL() + '");'}); 
   }
 
   // Trigger the image load event.
