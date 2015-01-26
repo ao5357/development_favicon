@@ -76,13 +76,20 @@ document.addEventListener("patternmatch", function(evt) {
 document.addEventListener("tabupdate", function(evt) {
   "use strict";
 
-  // Define semi-globals.
+  // Define locals.
   var tabId = evt.detail.tabId;
   var ext = {
     "matches": false,
     "orientation": "top",
     "bgcolor": "#ff0000"
-  }; 
+  };
+
+  // Trigger the patternmatch event. 
+  function dispatchPatternmatch(evt) {
+    // Pass the match to the next async handler.
+    var patternmatch = new CustomEvent('patternmatch', evt);
+    document.dispatchEvent(patternmatch);
+  }
 
   /**
    * Determine whether to do anything after tab is retrieved.
@@ -107,18 +114,28 @@ document.addEventListener("tabupdate", function(evt) {
         var favIconUrl = tab.favIconUrl;
         if(!favIconUrl) {
           // Set the default favicon to the default favicon.
-          favIconUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gEVFSYuu6K2kgAAAMxJREFUOMu9UssOgjAQnK0PYvw35M4Nvwmu6IJ8oikm7HpQkFIeQRMn2WS3mU5mugV+BLVNURQ6RYrj+AjAvvkbY8zDIzGzWmu9yrJMmVlF5CAiOxHZ9e+ZthF5GbC27qpFGJ7AXNwBNAB0VEBVZ7NGUYTrlZt+bADYfhwIAAIReU9UVbfuJM8vj77IdslBkpyduSxLzDhwUde1MwdB4PEcASLASTDcOWFeYPA1RjEUMHMRVgksrXGK50UgWudgsEbCfh9860CRphn+jifEvoLrs8T+3wAAAABJRU5ErkJggg==';
+          chrome.tabs.sendMessage(tabId, {'null': 'null'}, function(response){
+            if (response && response.favIconUrl) {
+              favIconUrl = response.favIconUrl;
+            }
+            dispatchPatternmatch({
+              'detail': {
+                'ext': ext,
+                'favIconUrl': favIconUrl,
+                'tabId': tabId
+              }
+            });
+          });
         }
-
-        // Pass the match to the next async handler.
-        var patternmatch = new CustomEvent('patternmatch', {
-          'detail': {
-            'ext': ext,
-            'favIconUrl': favIconUrl,
-            'tabId': tabId
-          }
-        });
-        document.dispatchEvent(patternmatch);
+        else {
+          dispatchPatternmatch({
+            'detail': {
+              'ext': ext,
+              'favIconUrl': favIconUrl,
+              'tabId': tabId
+            }
+          });
+        }
       }
     });
   }
