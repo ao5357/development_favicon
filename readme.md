@@ -9,7 +9,7 @@ with tons of tabs open per project; my local development site, the staging serve
 Each tab had the same favicon and often the same page title, so it wasn't possible at a glance to know
 which tab was which without opening it.
 
-This extension lets you target URLs with a regex match pattern (so .*\.local.* for my local environment) and
+This extension lets you target URLs with a regex match pattern (so `.*\.local.*` for my local environment) and
 apply effects to the favicon. I've got my local with a green stripe across the top, the staging server with a
 yellow one, and could set different production environments with different colors and effects.
 
