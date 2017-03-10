@@ -23,7 +23,9 @@
   "permissions": [
     "storage",
     "tabs",
-    "<all_urls>"
+    "<all_urls>",
+    "http://*/*",
+    "https://*/*"
   ],
   "short_name": "devicon",
   "version": "1.1.0"
