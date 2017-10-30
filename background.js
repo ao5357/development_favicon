@@ -30,10 +30,10 @@ document.addEventListener("patternmatch", function(evt) {
 
     switch (ext.orientation) {
       case 'right':
-        context.fillRect(Math.floor(canvas.width * .75), 0, Math.floor(canvas.width / 4), canvas.height);
+        context.fillRect(Math.floor(canvas.width * 0.75), 0, Math.floor(canvas.width / 4), canvas.height);
         break;
       case 'bottom':
-        context.fillRect(0, Math.floor(canvas.height * .75), canvas.width, Math.floor(canvas.height / 4));
+        context.fillRect(0, Math.floor(canvas.height * 0.75), canvas.width, Math.floor(canvas.height / 4));
         break;
       case 'left':
         context.fillRect(0, 0, Math.floor(canvas.width / 4), canvas.height);
@@ -84,7 +84,7 @@ document.addEventListener("tabupdate", function(evt) {
     "bgcolor": "#ff0000"
   };
 
-  // Trigger the patternmatch event. 
+  // Trigger the patternmatch event.
   function dispatchPatternmatch(evt) {
     // Pass the match to the next async handler.
     var patternmatch = new CustomEvent('patternmatch', evt);
@@ -101,7 +101,7 @@ document.addEventListener("tabupdate", function(evt) {
     chrome.storage.sync.get('rows', function(items){
       if (items.rows.length) {
         for (var i = 0; i < items.rows.length; i++) {
-          if (tab.url.match(items.rows[i].pattern)) {
+          if (tab.url.match(items.rows[i].pattern) || tab.title.match(items.rows[i].pattern)) {
             ext.matches = true;
             ext.orientation = items.rows[i].orientation;
             ext.bgcolor = items.rows[i].bgcolor;

@@ -65,7 +65,7 @@ form {
   fieldset {
     border: 1px solid #c0c0c0;
     margin: .5em 0;
-    padding: 0.35em 0.625em 0.75em;
+    padding: 0.35em 1em 0.75em;
   }
     legend {
       border: 0;
@@ -95,8 +95,8 @@ form {
     }
 
 /*-Other-*/
-b, strong { 
-  font-weight: bold; 
+b, strong {
+  font-weight: bold;
 }
 code {
   font-family: monospace;
@@ -142,9 +142,22 @@ sub, sup {
   cursor: pointer;
   display: none;
   float: right;
+  background: #eee;
+  color: #000;
+  width: 1.2em;
+  height: 1.2em;
+  line-height: 1.2em;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border-radius: 0.2em;
 }
   fieldset:hover .remove {
     display: block;
+  }
+  .remove:hover {
+    background: #f00;
+    color: #fff;
   }
 
 /*--Structure--*/
