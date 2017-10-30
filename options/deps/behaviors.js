@@ -94,6 +94,16 @@ document.addEventListener('DOMContentLoaded',function() {
     });
   }
 
+  var findParentFieldset = function (domElement) {
+    while (domElement.tagName.toUpperCase() !== 'FIELDSET' && domElement.tagName.toUpperCase() !== 'BODY') {
+      domElement = domElement.parentNode;
+    }
+    if (domElement.tagName.toUpperCase() === 'FIELDSET') {
+      return domElement;
+    }
+    return null;
+  };
+
   /**
    * The form should never submit.
    */
@@ -132,11 +142,19 @@ document.addEventListener('DOMContentLoaded',function() {
   }, false);
 
   options.rowForm.addEventListener('dragenter', function(evt) {
-    evt.srcElement.classList.add('over');
+    var targetElement = findParentFieldset(evt.srcElement);
+
+    if (targetElement) {
+      targetElement.classList.add('over');
+    }
   }, false);
 
   options.rowForm.addEventListener('dragleave', function(evt) {
-    evt.srcElement.classList.remove('over');
+    var targetElement = findParentFieldset(evt.srcElement);
+
+    if (targetElement) {
+      targetElement.classList.remove('over');
+    }
   }, false);
 
   options.rowForm.addEventListener('dragover', function(evt) {
@@ -144,10 +162,14 @@ document.addEventListener('DOMContentLoaded',function() {
   }, false);
 
   options.rowForm.addEventListener('drop', function(evt) {
-    evt.srcElement.classList.remove('over');
-    srcElem.innerHTML = evt.srcElement.innerHTML;
-    evt.srcElement.innerHTML = evt.dataTransfer.getData('text/html');
-    saveValues();
+    var targetElement = findParentFieldset(evt.srcElement);
+
+    if (targetElement) {
+      targetElement.classList.remove('over');
+      srcElem.innerHTML = targetElement.innerHTML;
+      targetElement.innerHTML = evt.dataTransfer.getData('text/html');
+      saveValues();
+    }
   }, false);
 
   /**
