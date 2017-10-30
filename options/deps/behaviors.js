@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded',function() {
     options.rowForm.appendChild(row);
     evt.preventDefault();
   }, false);
-  
+
   /**
    * Listen for remove xs.
    */
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded',function() {
       selectNode.innerHTML = selectNode.innerHTML.replace(/selected(=\".*?\")?/, '');
       selectNode[selectedElement].setAttribute("selected", "true");
     }
-    
+
     saveValues();
   }, false);
 });
