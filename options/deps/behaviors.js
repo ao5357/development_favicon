@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded',function() {
     }
     rowContent += '</select></label><label><span>Color</span><input class="bgcolor" type="color" value="';
     rowContent += bgcolor;
-    rowContent += '"></label><span class="remove">x</span>';
+    rowContent += '"></label><span class="remove">&times;</span>';
     row.innerHTML = rowContent;
     return row;
   }
