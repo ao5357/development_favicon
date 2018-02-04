@@ -1,19 +1,21 @@
-/*--Type Selectors--*/
-/*-Body-*/
+/**
+ * @file
+ * Styles for the settings page.
+ */
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   overflow-y: scroll;
 }
-html, button, input, select, textarea {
-  font-family: sans-serif;
-}
+  html, button, input, select, textarea {
+    font-family: sans-serif;
+  }
 body {
-  background: #fff;
-  color: rgb(48, 57, 66);
-  font-family: 'Liberation Sans', Arial, sans-serif;
-  font-size: 12px;
+  background: #f1f1f1;
+  font-family: Roboto, DejaVu Sans, Arial, sans-serif;
+  font-size: 16px;
   line-height: 1.45;
   margin: 0;
 }
@@ -38,18 +40,23 @@ ul, ol {
 
 /*-Heading-*/
 h1 {
-  color: rgb(48, 57, 66);
   font-size: 1.5em;
   font-weight: 400;
+  line-height: 1;
   margin: 0;
-  padding: 21px 0 13px;
+  padding: 10px;
 }
+  @media all and (max-width: 440px) {
+    h1 {
+      font-size: 15px;
+    }
+  }
 h2 {
-  color: #222;
-  font-size: 16px;
-  font-weight: 400;
+  color: #666;
+  font-size: .875rem;
+  font-weight: 600;
   margin: 0;
-  padding: 12px;
+  padding: 12px 0;
 }
 h3 {
   color: #000;
@@ -63,35 +70,130 @@ form {
   margin: 0;
 }
   fieldset {
-    border: 1px solid #c0c0c0;
+    border: 1px solid #eee;
     margin: .5em 0;
     padding: 0.35em 1em 0.75em;
+    position: relative;
   }
+    fieldset:hover {
+      border-color: #ddd;
+    }
+    fieldset > div {
+      display: flex;
+    }
+      @media all and (max-width: 480px) {
+        fieldset > div {
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+        }
+      }
+      @media all and (max-width: 360px) {
+        fieldset > div {
+          justify-content: flex-start;
+        }
+      }
     legend {
       border: 0;
       padding: 0;
       white-space: normal;
       *margin-left: -7px;
     }
-  button, input {
+  button, input, option, select {
+    font-size: 16px;
     line-height: normal;
   }
-    button, input[type="button"], input[type="reset"], input[type="submit"] {
-      padding: 5px 15px;
+    button,
+    .button,
+    input[type="button"],
+    input[type="reset"],
+    input[type="submit"] {
+      -webkit-appearance: none;
+      background-color: rgb(58, 117, 215);
+      border: 0 none;
+      border-radius: 2px;
+      box-shadow:
+        0 2px 2px 0 rgba(0,0,0,0.14),
+        0 1px 5px 0 rgba(0,0,0,0.12),
+        0 3px 1px -2px rgba(0,0,0,0.2);
+      cursor: pointer;
+      color: #fff;
+      display: inline-block;
+      font-size: 13px;
+      letter-spacing: .5px;
+      margin: 5px 5px 5px 0;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: .2s ease-out;
     }
+      button:hover,
+      .button:hover,
+      input[type="button"]:hover,
+      input[type="reset"]:hover,
+      input[type="submit"]:hover {
+        background-color: #3367d6;
+      }
     input[type="color"] {
       height: 1.2em;
     }
       input[type="color"]::-webkit-color-swatch-wrapper {
         padding: 0;
       }
+    input[type="text"] {
+      border: 0 none;
+      font-family: 'Roboto', Arial, sans-serif;
+      line-height: 1;
+      padding: 0;
+      vertical-align: sub;
+      width: 100%;
+    }
+      input[type="text"]:focus {
+        outline: 0 none;
+      }
   label {
-    float: left;
-    margin: .25em 1em .25em .5em;
+    background-image: linear-gradient(to top, #ccc, transparent 2px, transparent 100%);
+    color: #666;
+    display: block;
+    margin: 0 20px 0 0;
     overflow: hidden;
+    padding: 0;
+    position: relative;
   }
+    label:first-child {
+      flex: auto;
+    }
+    label:before,
+    label:after {
+      background-color: #5264AE;
+      bottom: 0;
+      content: '';
+      height: 2px;
+      position: absolute;
+      width: 0;
+      transition: all .3s ease-in;
+    }
+    label:before {
+      left: 50%;
+    }
+    label:after {
+      right: 50%;
+    }
+    label:focus-within {
+      color: #5264AE;
+      font-weight: bold;
+    }
+    label:focus-within:before,
+    label:focus-within:after {
+      width: 50%;
+    }
     label span {
       display: block;
+    }
+    @media all and (max-width: 480px) {
+      label {
+        margin-bottom: 12px;
+      }
     }
 
 /*-Other-*/
@@ -101,12 +203,71 @@ b, strong {
 code {
   font-family: monospace;
 }
-@media screen and (min-width: 1px) {
-  embed, img, object {
+details {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14);
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+    details:first-child > summary {
+      padding: 16px 48px 12px 24px;
+    }
+  details:last-child {
+    border-bottom: 0 none;
+    margin-bottom: 16px;
+  }
+    details:last-child > summary {
+      padding: 12px 48px 16px 24px;
+    }
+  details[open] {
+    margin: 16px 0;
+  }
+    details[open]:first-child {
+      margin-top: 0;
+    }
+  details > div {
+    padding: 0 24px 12px;
+    transition: all .3s ease-in;
+  }
+  summary {
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 48px 12px 24px;
+    position: relative;
+  }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary:after {
+      color: #666;
+      content: '\2304';
+      font-size: 30px;
+      line-height: 1;
+      position: absolute;
+      right: 24px;
+      top: 5px;
+      transform: rotate(0deg);
+      transition: all .3s ease-in;
+    }
+      details[open] > summary:after {
+        top: 15px;
+        transform: rotate(-180deg);
+      }
+    summary:hover {
+      background-color: #f1f1f1;
+    }
+    summary:focus {
+      border-bottom: 1px solid #ddd;
+      outline: 0 none;
+    }
+
+embed, img, object {
     height: auto;
     max-width: 100%;
   }
-}
   img {
     border: 0;
   }
@@ -127,30 +288,45 @@ sub, sup {
     top: -0.5em;
   }
 
+
 /*--Classes--*/
-.attribution {
-  margin: 2em 0 0;
+.box-shadow {
+  border-radius: 2px;
+  box-shadow:
+    0 2px 2px 0 rgba(0,0,0,.14),
+    0 3px 1px -2px rgba(0,0,0,.2),
+    0 1px 5px 0 rgba(0,0,0,.12);
 }
-  .attribution img {
-    margin: 0 10px 0 0;
-    vertical-align: middle;
-  }
+.card {
+  background-color: #fff;
+  padding: 16px 24px;
+}
+.container-bg {
+  background-color: #f1f1f1;
+}
+.icon {
+  display: inline-block;
+  padding: 5px 16px 5px 10px;
+  vertical-align: middle;
+}
 .over {
   border: 1px dashed #ccc;
 }
 .remove {
+  background: #eee;
+  border-radius: 0 0 0 2px;
+  color: #000;
   cursor: pointer;
   display: none;
-  float: right;
-  background: #eee;
-  color: #000;
-  width: 1.2em;
-  height: 1.2em;
-  line-height: 1.2em;
+  height: 20px;
+  line-height: 1;
   margin: 0;
   padding: 0;
+  position: absolute;
+  right: 0;
   text-align: center;
-  border-radius: 0.2em;
+  top: 0;
+  width: 20px;
 }
   fieldset:hover .remove {
     display: block;
@@ -163,25 +339,30 @@ sub, sup {
 /*--Structure--*/
 .page{
   margin: 0;
-  width: 600px;
 }
-  section {
-    overflow: hidden;
-  }
-  @media screen and (max-width: 601px) {
-    .page {
-      width: inherit;
-    }
-  }
-  @media screen and (min-width: 755px) {
-    .page {
-      margin-left: 155px;
-    }
-  }
   header {
-    border-bottom: 1px solid rgb(238, 238, 238);
+    background-color: #3367d6;
+    box-shadow: 2px 0 5px rgba(0,0,0,.5);
+    color: #fff;
+    left: 0;
+    padding: 6px 20px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
   }
-  section {}
-    section > div {
-      padding: 0 0 0 18px;
+    header + section {
+      margin-top: 72px;
+    }
+    header > h1 {
+      display: inline-block;
+    }
+  section {
+    margin: 16px auto;
+    max-width: 680px;
+  }
+    @media all and (max-width: 720px) {
+      section {
+        margin: 16px 20px;
+      }
     }

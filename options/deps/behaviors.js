@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded',function() {
     // Build out a row.
     var row = document.createElement("fieldset");
     row.draggable = 'true';
-    var rowContent = '<label><span>Regex Pattern</span><input class="pattern" placeholder=".*\\.local\\/.*" type="text" value="';
+    var rowContent = '<div>';
+    rowContent += '<label><span>Regex Pattern</span><input class="pattern" placeholder=".*\\.local\\/.*" type="text" value="';
     rowContent += pattern;
     rowContent += '"></label><label><span>Effect</span><select class="orientation">';
     for (var i = 0; i < options.orientations.length; i++) {
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded',function() {
     }
     rowContent += '</select></label><label><span>Color</span><input class="bgcolor" type="color" value="';
     rowContent += bgcolor;
-    rowContent += '"></label><span class="remove">&times;</span>';
+    rowContent += '"></label></div><span class="remove">&times;</span>';
     row.innerHTML = rowContent;
     return row;
   }
