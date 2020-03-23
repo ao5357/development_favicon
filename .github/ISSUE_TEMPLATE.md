@@ -1,22 +1,31 @@
-Before opening an issue:
+# Before opening an issue:
 
-- [Search for duplicate or closed issues](https://github.com/twbs/bootstrap/issues?utf8=%E2%9C%93&q=is%3Aissue)
-- [Validate](https://html5.validator.nu/) and [lint](https://github.com/twbs/bootlint#in-the-browser) any HTML to avoid common problems
-- Prepare a [reduced test case](https://css-tricks.com/reduced-test-cases/) for any bugs
-- Read the [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md)
+  * Search for duplicate or closed issues
+  * Check our SUPPORT.md file for details
 
-When asking general "how to" questions:
+# For bug reports:
 
-- Please do not open an issue here
-- Instead, ask for help on [StackOverflow, IRC, or Slack](https://github.com/twbs/bootstrap/blob/master/README.md#community)
+  1. Which OS/Browser/stack and other applicable technologies are you using?
+  2. What steps (URLs are great here whenever possible) can you follow (given 1) to replicate the problem?
+  3. What is the expected result of following step 2?
+  4. What happens instead?
+  5. Are you willing to try and fix it yourself as a contributor?
+  
+Please tag bug reports with the 'Bug' label.
 
-When reporting a bug, include:
+# For enhancement requests
 
-- Operating system and version (Windows, Mac OS X, Android, iOS, Win10 Mobile)
-- Browser and version (Chrome, Firefox, Safari, IE, MS Edge, Opera 15+, Android Browser)
-- Reduced test cases and potential fixes using [CodePen](https://codepen.io/) or [JS Bin](https://jsbin.com/)
+  * What exactly should the enhancement be?
+  * Why should this be an enhancement to this project rather than the userspace?
+  * What other projects have similar functionality or content? What makes these implementations cool?
+  * Who benefits from this enhancement?
+  * What documentation needs follow from this enhancement?
+  * Is backwards-compatibility a concern?
+  * Is additional test coverage required?
+  * Are you willing to try and create the enhancement yourself as a contributor?
+  
+Please tag enhancement requests with the 'Enhancement' label.
 
-When suggesting a feature, include:
+# For support requests
 
-- As much detail as possible for what we should add and why it's important to Bootstrap
-- Relevant links to prior art, screenshots, or live demos whenever possible
+Please tag support requests with the 'Support' label.

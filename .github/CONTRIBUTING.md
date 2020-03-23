@@ -1,180 +1,118 @@
-# Introduction
+# Contributing
 
-### Write something nice here!
+## Introduction
 
->First off, thank you for considering contributing to Active Admin. It's people like you that make Active Admin such a great tool.
+Thank you for being part of this project's contributor community! We need the support of people like you in order to keep 
+this open source movement alive.
 
-[source: [Active Admin](https://github.com/activeadmin/activeadmin/blob/master/CONTRIBUTING.md)] **Need more inspiration?** [1] [Read The Docs](http://read-the-docs.readthedocs.org/en/latest/contribute.html) [2] [Mustache.js](https://github.com/janl/mustache.js/#contributing)
+If you're looking for information about reporting bugs, requesting new features, etc., see [our Support docs](SUPPORT.md).
 
-### Tell them why they should read your guidelines.
+Following these guidelines helps to communicate that you respect the time of the developers managing and developing this 
+open source project. In return, they should reciprocate that respect in addressing your issue, assessing changes, and helping 
+you finalize your pull requests.
 
->Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open source project. In return, they should reciprocate that respect in addressing your issue, assessing changes, and helping you finalize your pull requests.
+## Contributions
 
-[source: [Hoodie](https://github.com/hoodiehq/hoodie/blob/master/CONTRIBUTING.md)]
+We are open to this project growing and adapting to meet its core user group's needs. As such, we are not specifically calling 
+out which types of contributions we accept and which we are not seeking. Instead, here is a list of "perennial favorites"; 
+areas that are appreciated on any project:
 
-### Explain what kinds of contributions you are looking for.
+  * Code style and formatting improvements
+  * Documentation
+  * Addition of new functionality
+  * Enhancement of existing functionality
+  * Better test coverage
+  * Bugs as reported in the issue queue
+  * Content, as applicable
 
-Keep an open mind! Improving documentation, bug triaging, or writing tutorials are all examples of helpful contributions that mean less work for you.
+## Code of conduct
 
-> Elasticsearch is an open source project and we love to receive contributions from our community — you! There are many ways to contribute, from writing tutorials or blog posts, improving the documentation, submitting bug reports and feature requests or writing code which can be incorporated into Elasticsearch itself.
+All contributions and communication surrounding contributing is subject to [our code of conduct](CODE_OF_CONDUCT.md). We're
+nice folks that will be nice to you by default.
 
-[source: [Elasticsearch](https://github.com/elastic/elasticsearch/blob/master/CONTRIBUTING.md)] **Need more inspiration?** [1] [Devise](https://github.com/plataformatec/devise/wiki/Contributing) [2] [Geocoder](https://github.com/alexreisner/geocoder#known-issue) (“known issue”)
+## Code guidelines
 
-### Explain contributions you are NOT looking for (if any).
+The following are considerations, rather than hard-and-fast rules, about the kinds of code changes this community values:
 
-Again, defining this up front means less work for you. If someone ignores your guide and submits something you don’t want, you can simply close it and point to your policy.
+  * We prefer 'vanilla' solutions and remaining dependency-free by default
+  * We get very happy when people want to improve _accessibility_ and front-end performance in the project
+  * We like solutions that allow writing information once and using it in multiple places/contexts
+  * We _love_ generalized documentation that can be used on this but also any other similar project
+  * We **love** "just in time" documentation; notes that appear in the place you need them
 
-> Please, don't use the issue tracker for [support questions]. Check whether the #pocoo IRC channel on Freenode can help with your issue. If your problem is not strictly Werkzeug or Flask specific, #python is generally more active. Stack Overflow is also worth considering.
+## Pull requests
 
-[source: [Flask](https://github.com/pallets/flask/blob/master/CONTRIBUTING.rst)] **Need more inspiration?** [1] [cucumber-ruby](https://github.com/cucumber/cucumber-ruby/blob/master/CONTRIBUTING.md#about-to-create-a-new-github-issue) [2] [Read the Docs](http://read-the-docs.readthedocs.org/en/latest/open-source-philosophy.html#unsupported)
+Here's the nuts and bolts of it:
 
-# Ground Rules
-### Set expectations for behavior (yours, and theirs).
-This includes not just how to communicate with others (being respectful, considerate, etc) but also technical responsibilities (importance of testing, project dependencies, etc). Mention and link to your code of conduct, if you have one.
+  1. [Fork the repository](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
+  2. [Clone your fork to your machine](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+  3. (Optional, but [recommended](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches)) 
+    `git branch new-branch-name` and `git checkout new-branch-name`
+  4. Set up a development version, per the [README](../readme.md)
+  5. **Your work here**
+  6. `git commit -m "Brief description of the changes made"`
+  7. `git push origin new-branch-name`
+  8. [Make a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) 
+    on this repository
+  9. Feel the praise and accolades pour in!
 
-> Responsibilities
-> * Ensure cross-platform compatibility for every change that's accepted. Windows, Mac, Debian & Ubuntu Linux.
-> * Ensure that code that goes into core meets all requirements in this checklist: https://gist.github.com/audreyr/4feef90445b9680475f2
-> * Create issues for any major changes and enhancements that you wish to make. Discuss things transparently and get community feedback.
-> * Don't add any classes to the codebase unless absolutely needed. Err on the side of using functions.
-> * Keep feature versions as small as possible, preferably one new feature per version.
-> * Be welcoming to newcomers and encourage diverse new contributors from all backgrounds. See the [Python Community Code of Conduct](https://www.python.org/psf/codeofconduct/).
+Here are some things you may be wondering about:
 
-[source: [cookiecutter](https://github.com/audreyr/cookiecutter/blob/master/CONTRIBUTING.rst)] **Need more inspiration?** [1] [Celery](https://github.com/celery/celery/blob/master/CONTRIBUTING.rst#community-code-of-conduct) [2] [geocoder](https://github.com/alexreisner/geocoder#contributing)
+  * You don't have to sign anything to participate
+  * We appreciate all PRs and assess them all. You **don't need an existing issue** to submit a pull request
+  * We don't care about commit message formatting, as long as the message is pretty good at describing the changes
+  * We have a pull request template you will see, but are otherwise not concerned with pull request formatting as long as you
+    give us the information we need
+  * If you can do your work via GitHub's edit interface, we won't bat an eye accepting 100%-web changes. All the cloning, branching,
+    and setting up a development environment in the PR instructions is there for most developers, not to tell you how to do 
+    good work
+  * Don't worry about squashing or rebase-ing your commits, unless that's a thing you personally prefer
+  * If you're working on a PR based on an issue, please be sure to refer to the issue where applicable (PR definitely, commit message maybe)
+  * PR reviewers will assess things like code-style adherence and other things, and will offer to fix that for you if you'd prefer. 
+    You are allowed to decide how active you are in the approval process. If we don't hear from you inside of a week, we may 
+    move ahead with changes without you
+  * We're all about those emoji reactions, so hit the button liberally
+  * Our threshold for giving contributors access to merge PRs, commit to master, etc. is relatively low, so if you would like 
+    to become a maintainer for this project just make a few PRs and ask nicely!
 
-# Your First Contribution
-Help people who are new to your project understand where they can be most helpful. This is also a good time to let people know if you follow a label convention for flagging beginner issues.
+## Beginners
 
-> Unsure where to begin contributing to Atom? You can start by looking through these beginner and help-wanted issues:
-> Beginner issues - issues which should only require a few lines of code, and a test or two.
-> Help wanted issues - issues which should be a bit more involved than beginner issues.
-> Both issue lists are sorted by total number of comments. While not perfect, number of comments is a reasonable proxy for impact a given change will have.
+Contributing to open source is both exciting and quite daunting! Here are some resources about what's going on, if this is 
+your first open source project contribution on GitHub:
 
-[source: [Atom](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#your-first-code-contribution)] **Need more inspiration?** [1] [Read the Docs](http://docs.readthedocs.org/en/latest/contribute.html#contributing-to-development) [2] [Django](https://docs.djangoproject.com/en/dev/internals/contributing/new-contributors/#first-steps) (scroll down to "Guidelines" as well)
+  * [How to contribute to open source](https://opensource.guide/how-to-contribute/) at Open Source Guides
+  * [GitHub Guides](https://guides.github.com/)
+  * ["Make a pull request"](http://makeapullrequest.com/)
+  * [First timers only](https://www.firsttimersonly.com/)
 
-### Bonus points: Add a link to a resource for people who have never contributed to open source before.
-Here are a couple of friendly tutorials you can include: http://makeapullrequest.com/ and http://www.firsttimersonly.com/
+## Review process
 
-> Working on your first Pull Request? You can learn how from this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+When a pull request is submitted, the following happens:
 
-[source: [React](https://github.com/facebook/react/blob/master/CONTRIBUTING.md#pull-requests)]  
+  1. The first maintainer to see the PR will thank the contributor in a comment and get happy with the emojis
+  2. The maintainer will assign themselves or another (subject matter expert) maintainer to shepherd it to merge
+  3. Anybody in the whole world is welcome to comment on the PR as long as they abide by the code of conduct. Reasonable 
+    feedback will always be seriously considered
+  4. The assigned party will review the purpose, formatting, and other characteristics of the PR, and provide feedback to the 
+    submitter as pertinent. If changes are required, the maintainer will offer to let the submitter do them, or to perform them
+    on their own. The submitter has a week to respond with their choice
+  5. Once changes are applied, the PR is tested prior to merge. Additional testing and community review may be requested at 
+   the maintainer's discretion
+  6. The PR is ultimately **merged**, or in rare cases rejected
 
-As a side note, it helps to use newcomer-friendly language throughout the rest of your document. Here are a couple of examples from [Active Admin](https://github.com/activeadmin/activeadmin/blob/master/CONTRIBUTING.md):
+Our target for any turn-around (communications and code changes) is one week. If a particular person in the PR thread is 
+supposed to do something and they haven't responded in a week, other parties in the project community may pick up and carry the
+PR to closure.
 
->At this point, you're ready to make your changes! Feel free to ask for help; everyone is a beginner at first :smile_cat:
->
->If a maintainer asks you to "rebase" your PR, they're saying that a lot of code has changed, and that you need to update your branch so it's easier to merge.
+Here are some reasons that a pull request might be rejected rather than shepherded to merge:
 
-# Getting started
-### Give them a quick walkthrough of how to submit a contribution.
-How you write this is up to you, but some things you may want to include:
+  * **PR is a feature-request-in-disguise**: a small commit that requires most of the work still to be done
+  * **Obvious intellectual property infringement**: we don't lie, nor do we steal
+  * **Code of conduct violation**: if the submitter is mean, we'll give them fair warning. Repeated abuses will lead to rejection
+  * **Lack of permissions**: if a submitter doesn't allow maintainer changes and goes incommunicado, we have no choice
+  * **Big/fundamental changes**: big changes will be assessed and reviewed by the community to ensure they don't change the 
+    nature of the project in a way most of the community doesn't support
 
-* Let them know if they need to sign a CLA, agree to a DCO, or get any other legal stuff out of the way
-* If tests are required for contributions, let them know, and explain how to run the tests
-* If you use anything other than GitHub to manage issues (ex. JIRA or Trac), let them know which tools they’ll need to contribute
+## Thanks again
 
->For something that is bigger than a one or two line fix:
-
->1. Create your own fork of the code
->2. Do the changes in your fork
->3. If you like the change and think the project could use it:
-    * Be sure you have followed the code style for the project.
-    * Sign the Contributor License Agreement, CLA, with the jQuery Foundation.
-    * Note the jQuery Foundation Code of Conduct.
-    * Send a pull request indicating that you have a CLA on file.
-
-[source: [Requirejs](http://requirejs.org/docs/contributing.html)] **Need more inspiration?** [1] [Active Admin](https://github.com/activeadmin/activeadmin/blob/master/CONTRIBUTING.md#1-where-do-i-go-from-here) [2] [Node.js](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md#code-contributions) [3] [Ember.js](https://github.com/emberjs/ember.js/blob/master/CONTRIBUTING.md#pull-requests)
-
-### If you have a different process for small or "obvious" fixes, let them know.
-
-> Small contributions such as fixing spelling errors, where the content is small enough to not be considered intellectual property, can be submitted by a contributor as a patch, without a CLA.
->
->As a rule of thumb, changes are obvious fixes if they do not introduce any new functionality or creative thinking. As long as the change does not affect functionality, some likely examples include the following:
->* Spelling / grammar fixes
->* Typo correction, white space and formatting changes
->* Comment clean up
->* Bug fixes that change default return values or error codes stored in constants
->* Adding logging messages or debugging output
->* Changes to ‘metadata’ files like Gemfile, .gitignore, build scripts, etc.
->* Moving source files from one directory or package to another
-
-[source: [Chef](https://github.com/chef/chef/blob/master/CONTRIBUTING.md#chef-obvious-fix-policy)] **Need more inspiration?** [1] [Puppet](https://github.com/puppetlabs/puppet/blob/master/CONTRIBUTING.md#making-trivial-changes)
-
-# How to report a bug
-### Explain security disclosures first!
-At bare minimum, include this sentence:
-> If you find a security vulnerability, do NOT open an issue. Email XXXX instead.
-
-If you don’t want to use your personal contact information, set up a “security@” email address. Larger projects might have more formal processes for disclosing security, including encrypted communication. (Disclosure: I am not a security expert.)
-
-> Any security issues should be submitted directly to security@travis-ci.org
-> In order to determine whether you are dealing with a security issue, ask yourself these two questions:
-> * Can I access something that's not mine, or something I shouldn't have access to?
-> * Can I disable something for other people?
->
-> If the answer to either of those two questions are "yes", then you're probably dealing with a security issue. Note that even if you answer "no" to both questions, you may still be dealing with a security issue, so if you're unsure, just email us at security@travis-ci.org.
-
-[source: [Travis CI](https://github.com/travis-ci/travis-ci/blob/master/CONTRIBUTING.md)] **Need more inspiration?** [1] [Celery](https://github.com/celery/celery/blob/master/CONTRIBUTING.rst#security) [2] [Express.js](https://github.com/expressjs/express/blob/master/Security.md)
-
-### Tell your contributors how to file a bug report.
-You can even include a template so people can just copy-paste (again, less work for you).
-
-> When filing an issue, make sure to answer these five questions:
->
-> 1. What version of Go are you using (go version)?
-> 2. What operating system and processor architecture are you using?
-> 3. What did you do?
-> 4. What did you expect to see?
-> 5. What did you see instead?
-> General questions should go to the golang-nuts mailing list instead of the issue tracker. The gophers there will answer or ask you to file an issue if you've tripped over a bug.
-
-[source: [Go](https://github.com/golang/go/blob/master/CONTRIBUTING.md#filing-issues)] **Need more inspiration?** [1] [Celery](https://github.com/celery/celery/blob/master/CONTRIBUTING.rst#other-bugs ) [2] [Atom](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#reporting-bugs) (includes template)
-
-# How to suggest a feature or enhancement
-### If you have a particular roadmap, goals, or philosophy for development, share it here.
-This information will give contributors context before they make suggestions that may not align with the project’s needs.
-
-> The Express philosophy is to provide small, robust tooling for HTTP servers, making it a great solution for single page applications, web sites, hybrids, or public HTTP APIs.
->
-> Express does not force you to use any specific ORM or template engine. With support for over 14 template engines via Consolidate.js, you can quickly craft your perfect framework.
-
-[source: [Express](https://github.com/expressjs/express#philosophy)] **Need more inspiration?** [Active Admin](https://github.com/activeadmin/activeadmin#goals)
-
-### Explain your desired process for suggesting a feature.
-If there is back-and-forth or signoff required, say so. Ask them to scope the feature, thinking through why it’s needed and how it might work.
-
-> If you find yourself wishing for a feature that doesn't exist in Elasticsearch, you are probably not alone. There are bound to be others out there with similar needs. Many of the features that Elasticsearch has today have been added because our users saw the need. Open an issue on our issues list on GitHub which describes the feature you would like to see, why you need it, and how it should work.
-
-[source: [Elasticsearch](https://github.com/elastic/elasticsearch/blob/master/CONTRIBUTING.md#feature-requests)] **Need more inspiration?** [1] [Hoodie](https://github.com/hoodiehq/hoodie/blob/master/CONTRIBUTING.md#feature-requests) [2] [Ember.js](https://github.com/emberjs/ember.js/blob/master/CONTRIBUTING.md#requesting-a-feature)
-
-# Code review process
-### Explain how a contribution gets accepted after it’s been submitted.
-Who reviews it? Who needs to sign off before it’s accepted? When should a contributor expect to hear from you? How can contributors get commit access, if at all?
-
-> The core team looks at Pull Requests on a regular basis in a weekly triage meeting that we hold in a public Google Hangout. The hangout is announced in the weekly status updates that are sent to the puppet-dev list. Notes are posted to the Puppet Community community-triage repo and include a link to a YouTube recording of the hangout.
-> After feedback has been given we expect responses within two weeks. After two weeks we may close the pull request if it isn't showing any activity.
-
-[source: [Puppet](https://github.com/puppetlabs/puppet/blob/master/CONTRIBUTING.md#submitting-changes)] **Need more inspiration?** [1] [Meteor](https://meteor.hackpad.com/Responding-to-GitHub-Issues-SKE2u3tkSiH ) [2] [Express.js](https://github.com/expressjs/express/blob/master/Contributing.md#becoming-a-committer)
-
-# Community
-If there are other channels you use besides GitHub to discuss contributions, mention them here. You can also list the author, maintainers, and/or contributors here, or set expectations for response time.
-
-> You can chat with the core team on https://gitter.im/cucumber/cucumber. We try to have office hours on Fridays.
-
-[source: [cucumber-ruby](https://github.com/cucumber/cucumber-ruby/blob/master/CONTRIBUTING.md#talking-with-other-devs)] **Need more inspiration?**
- [1] [Chef](https://github.com/chef/chef/blob/master/CONTRIBUTING.md#-developer-office-hours) [2] [Cookiecutter](https://github.com/audreyr/cookiecutter#community)
-
-# BONUS: Code, commit message and labeling conventions
-These sections are not necessary, but can help streamline the contributions you receive.
-
-### Explain your preferred style for code, if you have any.
-
-**Need inspiration?** [1] [Requirejs](http://requirejs.org/docs/contributing.html#codestyle) [2] [Elasticsearch](https://github.com/elastic/elasticsearch/blob/master/CONTRIBUTING.md#contributing-to-the-elasticsearch-codebase)
-
-### Explain if you use any commit message conventions.
-
-**Need inspiration?** [1] [Angular](https://github.com/angular/material/blob/master/.github/CONTRIBUTING.md#submit) [2] [Node.js](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md#step-3-commit)
-
-### Explain if you use any labeling conventions for issues.
-
-**Need inspiration?** [1] [StandardIssueLabels](https://github.com/wagenet/StandardIssueLabels#standardissuelabels) [2] [Atom](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#issue-and-pull-request-labels)
+We really appreciate your willingness to contribute!
