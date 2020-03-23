@@ -4,7 +4,7 @@ A chrome extension to add color effects to favicons based on tab URL and title r
 
 ## Why
 
-I make websites (for [Commercial Progression](http://www.commercialprogression.com/)), and I found myself
+I make websites, and found myself
 with tons of tabs open per project; my local development site, the staging server, maybe even production.
 Each tab had the same favicon and often the same page title, so it wasn't possible at a glance to know
 which tab was which without opening it.
@@ -29,6 +29,8 @@ open to pull requests.
 
 ### Install (unpacked)
 
-To install the development version of the extension, either clone the repo or use the ZIP download. At chrome://extensions make sure to check the "Developer mode" checkbox in the upper right-hand corner. After that, there will be a button to load an unpacked extension. Click that and select the folder containing the extension. It should then be ready to go!
+To install the development version of the extension, either clone the repo or use the ZIP download. At `chrome://extensions` 
+make sure to check the "Developer mode" checkbox in the upper right-hand corner. After that, there will be a button to 
+load an unpacked extension. Click that and select the folder containing the extension. It should then be ready to go!
 
 Thank you for your interest in Development Favicon!

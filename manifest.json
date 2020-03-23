@@ -1,5 +1,5 @@
 {
-  "author": "Commercial Progression",
+  "author": "Brad Czerniak",
   "name": "__MSG_extensionName__",
   "background": {
     "scripts": ["background.js"],
@@ -26,5 +26,5 @@
     "<all_urls>"
   ],
   "short_name": "devicon",
-  "version": "1.3.0"
+  "version": "1.3.1"
 }
