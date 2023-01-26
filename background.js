@@ -99,7 +99,7 @@ document.addEventListener("tabupdate", function(evt) {
      * Grab the settings from chrome storage.
      */
     chrome.storage.sync.get('rows', function(items){
-      if (items.rows.length) {
+      if (items && items.rows && items.rows.length) {
         for (var i = 0; i < items.rows.length; i++) {
           if (tab.url.match(items.rows[i].pattern) || tab.title.match(items.rows[i].pattern)) {
             ext.matches = true;
