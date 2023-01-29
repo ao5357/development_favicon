@@ -4,14 +4,14 @@
  * Event is dispatched only if a match is found
  * in the "tabupdate" cycle.
  */
-document.addEventListener("patternmatch", function(evt) {
+self.addEventListener("patternmatch", function(evt) {
   "use strict";
 
   // Define scoped pseudo-globals.
   var ext = evt.detail.ext,
   tabId = evt.detail.tabId,
   favIconUrl = evt.detail.favIconUrl,
-  holder = document.createElement("img");
+  holder = evt.detail.holder;
   holder.addEventListener("load", imageLoadCallback);
 
   /**
@@ -19,9 +19,7 @@ document.addEventListener("patternmatch", function(evt) {
    */
   function imageLoadCallback(evt) {
     // Transpose the icon into a canvas.
-    var canvas = document.createElement("canvas");
-    canvas.width = holder.width;
-    canvas.height = holder.height;
+    var canvas = new OffscreenCanvas(holder.width, holder.height);
     var context = canvas.getContext("2d");
     context.drawImage(holder, 0, 0);
 
@@ -73,7 +71,7 @@ document.addEventListener("patternmatch", function(evt) {
  * If the native chrome event returns complete, this
  * event gets fired separately.
  */
-document.addEventListener("tabupdate", function(evt) {
+self.addEventListener("tabupdate", function(evt) {
   "use strict";
 
   // Define locals.
@@ -88,7 +86,7 @@ document.addEventListener("tabupdate", function(evt) {
   function dispatchPatternmatch(evt) {
     // Pass the match to the next async handler.
     var patternmatch = new CustomEvent('patternmatch', evt);
-    document.dispatchEvent(patternmatch);
+    self.dispatchEvent(patternmatch);
   }
 
   /**
@@ -112,16 +110,20 @@ document.addEventListener("tabupdate", function(evt) {
 
       if (ext.matches) {
         var favIconUrl = tab.favIconUrl;
-        if(!favIconUrl) {
+        var holder = tab.holder;
+
+        if(!favIconUrl && !holder) {
           // Set the default favicon to the default favicon.
           chrome.tabs.sendMessage(tabId, {'null': 'null'}, function(response){
-            if (response && response.favIconUrl) {
+            if (response && response.favIconUrl && response.holder) {
               favIconUrl = response.favIconUrl;
+              holder = response.holder;
             }
             dispatchPatternmatch({
               'detail': {
                 'ext': ext,
                 'favIconUrl': favIconUrl,
+                'holder': holder,
                 'tabId': tabId
               }
             });
@@ -132,6 +134,7 @@ document.addEventListener("tabupdate", function(evt) {
             'detail': {
               'ext': ext,
               'favIconUrl': favIconUrl,
+              'holder': holder,
               'tabId': tabId
             }
           });
@@ -153,6 +156,6 @@ chrome.tabs.onUpdated.addListener(function(tabId, props) {
   "use strict";
   if (props.status === "complete") {
     var tabupdate = new CustomEvent('tabupdate', {'detail':{'tabId': tabId}});
-    document.dispatchEvent(tabupdate);
+    self.dispatchEvent(tabupdate);
   }
 });

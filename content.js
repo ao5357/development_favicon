@@ -1,7 +1,9 @@
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   var links,
-      i;
+      i,
+      holder = document.createElement("img");
 
+  // Message is either a request for the favicon URL or a prompt to update it.
   if (!message.favIconUrl) {
   	// Set a default to pass back.
     var favIconUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gEVFSYuu6K2kgAAAMxJREFUOMu9UssOgjAQnK0PYvw35M4Nvwmu6IJ8oikm7HpQkFIeQRMn2WS3mU5mugV+BLVNURQ6RYrj+AjAvvkbY8zDIzGzWmu9yrJMmVlF5CAiOxHZ9e+ZthF5GbC27qpFGJ7AXNwBNAB0VEBVZ7NGUYTrlZt+bADYfhwIAAIReU9UVbfuJM8vj77IdslBkpyduSxLzDhwUde1MwdB4PEcASLASTDcOWFeYPA1RjEUMHMRVgksrXGK50UgWudgsEbCfh9860CRphn+jifEvoLrs8T+3wAAAABJRU5ErkJggg==';
@@ -15,7 +17,10 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     }
 
     // Send either the URL or the default.
-    sendResponse({'favIconUrl': favIconUrl});
+    sendResponse({
+      'favIconUrl': favIconUrl,
+      'holder': holder
+    });
   }
   else {
     // Create a new favicon link.

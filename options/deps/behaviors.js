@@ -1,5 +1,5 @@
 // The non-jQuery equivalent of $(document).ready();
-document.addEventListener('DOMContentLoaded',function() {
+document.addEventListener('DOMContentLoaded', function () {
   "use strict";
 
   /**
@@ -19,7 +19,12 @@ document.addEventListener('DOMContentLoaded',function() {
   ];
 
   /**
-   * Make a row the can be added to the form, with values in place if provided.
+   * Make a row that can be added to the form, with values in place if provided.
+   *
+   * @param pattern
+   * @param orientation
+   * @param bgcolor
+   * @returns {HTMLFieldSetElement}
    */
   function buildRow(pattern, orientation, bgcolor) {
     // Defaults (ternary).
@@ -29,11 +34,16 @@ document.addEventListener('DOMContentLoaded',function() {
 
     // Build out a row.
     var row = document.createElement("fieldset");
-    row.draggable = 'true';
-    var rowContent = '<div>';
-    rowContent += '<label><span>Regex Pattern</span><input class="pattern" placeholder=".*\\.local\\/.*" type="text" value="';
-    rowContent += pattern;
-    rowContent += '"></label><label><span>Effect</span><select class="orientation">';
+    row.draggable = true;
+    var rowContent = `<div>
+      <label>
+        <span>Regex Pattern</span>
+        <input class="pattern" placeholder=".*\\.local\\/.*" type="text" value="${pattern}">
+      </label>
+      <label>
+        <span>Effect</span>
+        <select class="orientation">`;
+
     for (var i = 0; i < options.orientations.length; i++) {
       rowContent += '<option value="' + options.orientations[i] + '"';
       if (orientation === options.orientations[i]) {
@@ -41,9 +51,16 @@ document.addEventListener('DOMContentLoaded',function() {
       }
       rowContent += '>' + options.orientations[i] + '</option>';
     }
-    rowContent += '</select></label><label><span>Color</span><input class="bgcolor" type="color" value="';
-    rowContent += bgcolor;
-    rowContent += '"></label></div><span class="remove">&times;</span>';
+
+    rowContent += `
+        </select>
+      </label>
+      <label>
+        <span>Color</span>
+        <input class="bgcolor" type="color" value="${bgcolor}">
+      </label>
+    </div><span class="remove">&times;</span>`;
+
     row.innerHTML = rowContent;
     return row;
   }
@@ -51,7 +68,7 @@ document.addEventListener('DOMContentLoaded',function() {
   /**
    * When the script loads, fire off a call to the synced values.
    */
-  chrome.storage.sync.get('rows', function(items) {
+  chrome.storage.sync.get('rows', function (items) {
     var row;
     if (items.rows.length < 1) {
       row = buildRow();
@@ -71,6 +88,8 @@ document.addEventListener('DOMContentLoaded',function() {
 
   /**
    * Get all values (in order).
+   *
+   * @returns {*[]}
    */
   function getValues() {
     var values = [];
@@ -90,43 +109,33 @@ document.addEventListener('DOMContentLoaded',function() {
    */
   function saveValues() {
     var values = getValues();
-    chrome.storage.sync.set({'rows': values}, function() {
-      console.log('Sync successful.');
+    chrome.storage.sync.set({'rows': values}, function () {
     });
   }
-
-  var findParentFieldset = function (domElement) {
-    while (domElement.tagName.toUpperCase() !== 'FIELDSET' && domElement.tagName.toUpperCase() !== 'BODY') {
-      domElement = domElement.parentNode;
-    }
-    if (domElement.tagName.toUpperCase() === 'FIELDSET') {
-      return domElement;
-    }
-    return null;
-  };
 
   /**
    * The form should never submit.
    */
-  options.rowForm.addEventListener('submit', function(evt) {
+  options.rowForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
   }, false);
 
   /**
    * Add another row.
    */
-  document.querySelector("#add-row").addEventListener('click', function(evt) {
+  document.querySelector("#add-row").addEventListener('click', function (evt) {
+    evt.preventDefault();
+
     var row = buildRow();
     options.rowForm.appendChild(row);
-    evt.preventDefault();
   }, false);
 
   /**
    * Listen for remove xs.
    */
-  options.rowForm.addEventListener('click', function(evt) {
-    if (evt.toElement.classList[0] === 'remove') {
-      options.rowForm.removeChild(evt.toElement.parentNode);
+  options.rowForm.addEventListener('click', function (evt) {
+    if (evt.target.closest('.remove')) {
+      options.rowForm.removeChild(evt.target.parentNode);
       saveValues();
     }
   }, false);
@@ -136,39 +145,56 @@ document.addEventListener('DOMContentLoaded',function() {
    */
   var srcElem = null;
 
-  options.rowForm.addEventListener('dragstart', function(evt) {
-    evt.dataTransfer.effectAllowed = 'move';
-    evt.dataTransfer.setData('text/html', evt.srcElement.innerHTML);
-    srcElem = evt.srcElement;
-  }, false);
+  /**
+   * When a draggable element is clicked and held.
+   */
+  options.rowForm.addEventListener('dragstart', function (evt) {
+    // Only operate on fieldsets and their children.
+    if (evt.target !== document && evt.target.closest('fieldset')) {
+      srcElem = evt.target.closest('fieldset');
 
-  options.rowForm.addEventListener('dragenter', function(evt) {
-    var targetElement = findParentFieldset(evt.srcElement);
-
-    if (targetElement) {
-      targetElement.classList.add('over');
+      evt.dataTransfer.effectAllowed = 'move';
+      evt.dataTransfer.setData('text/html', srcElem.innerHTML);
     }
   }, false);
 
-  options.rowForm.addEventListener('dragleave', function(evt) {
-    var targetElement = findParentFieldset(evt.srcElement);
-
-    if (targetElement) {
-      targetElement.classList.remove('over');
-    }
+  /**
+   * When a dragged element invades another element's space.
+   */
+  options.rowForm.addEventListener('dragenter', function (evt) {
+    this.classList.add('over');
   }, false);
 
-  options.rowForm.addEventListener('dragover', function(evt) {
+  /**
+   * When the dragged element leaves another element's airspace.
+   */
+  options.rowForm.addEventListener('dragleave', function (evt) {
+    this.classList.remove('over');
+  }, false);
+
+  /**
+   * No tutorial has anything but false returns for this event.
+   */
+  options.rowForm.addEventListener('dragover', function (evt) {
     evt.preventDefault();
+    return false;
   }, false);
 
-  options.rowForm.addEventListener('drop', function(evt) {
-    var targetElement = findParentFieldset(evt.srcElement);
+  /**
+   * When the held-and-dragged element is released, determine whether to do
+   * anything.
+   */
+  options.rowForm.addEventListener('drop', function (evt) {
+    evt.stopPropagation();
 
-    if (targetElement) {
-      targetElement.classList.remove('over');
-      srcElem.innerHTML = targetElement.innerHTML;
-      targetElement.innerHTML = evt.dataTransfer.getData('text/html');
+    // If dropped where it was, do nothing. Otherwise let's invert the elements.
+    if (srcElem !== evt.target.closest('fieldset')) {
+      var thisElem = evt.target.closest('fieldset');
+      thisElem.classList.remove('over');
+
+      srcElem.innerHTML = thisElem.innerHTML;
+      thisElem.innerHTML = evt.dataTransfer.getData('text/html');
+
       saveValues();
     }
   }, false);
@@ -176,11 +202,11 @@ document.addEventListener('DOMContentLoaded',function() {
   /**
    * Any change on the form should trigger a storage sync.
    */
-  options.rowForm.addEventListener('change', function(evt){
+  options.rowForm.addEventListener('change', function (evt) {
     // Ensure selected dropdowns save state when dragged.
-    if (evt.srcElement.localName === "select") {
-      var selectNode = evt.srcElement,
-          selectedElement = selectNode.selectedIndex;
+    if (evt.target.localName === "select") {
+      var selectNode = evt.target,
+        selectedElement = selectNode.selectedIndex;
       selectNode.innerHTML = selectNode.innerHTML.replace(/selected(=\".*?\")?/, '');
       selectNode[selectedElement].setAttribute("selected", "true");
     }
