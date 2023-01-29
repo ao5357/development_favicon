@@ -29,8 +29,22 @@ open to pull requests.
 
 ### Install (unpacked)
 
-To install the development version of the extension, either clone the repo or use the ZIP download. At `chrome://extensions` 
-make sure to check the "Developer mode" checkbox in the upper right-hand corner. After that, there will be a button to 
+To install the development version of the extension, either clone the repo or use the ZIP download. At `chrome://extensions`
+make sure to check the "Developer mode" checkbox in the upper right-hand corner. After that, there will be a button to
 load an unpacked extension. Click that and select the folder containing the extension. It should then be ready to go!
 
 Thank you for your interest in Development Favicon!
+
+### Credits
+
+Many thanks to the following folks for reporting bugs, providing PRs, testing, and otherwise helping the project!
+
+  * aldosch
+  * cyrusdg
+  * davmillar (a lot!)
+  * Glutnix
+  * ispringer
+  * jetpacmonkey
+  * jgbishop
+  * mohic
+  * orschiro

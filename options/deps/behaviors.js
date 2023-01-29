@@ -1,3 +1,8 @@
+/**
+ * @file
+ * Front-end behaviors on the extension settings page.
+ */
+
 // The non-jQuery equivalent of $(document).ready();
 document.addEventListener('DOMContentLoaded', function () {
   "use strict";
@@ -5,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * Create and populate each fieldset.
    */
-  var options = {};
+  let options = {};
   options.rowForm = document.querySelector("form");
   options.orientations = [
     'top',
@@ -33,9 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
     bgcolor = typeof bgcolor !== 'undefined' ? bgcolor : '#ff0000';
 
     // Build out a row.
-    var row = document.createElement("fieldset");
+    let row = document.createElement("fieldset");
     row.draggable = true;
-    var rowContent = `<div>
+    let rowContent = `<div>
       <label>
         <span>Regex Pattern</span>
         <input class="pattern" placeholder=".*\\.local\\/.*" type="text" value="${pattern}">
@@ -44,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <span>Effect</span>
         <select class="orientation">`;
 
-    for (var i = 0; i < options.orientations.length; i++) {
+    for (let i = 0; i < options.orientations.length; i++) {
       rowContent += '<option value="' + options.orientations[i] + '"';
       if (orientation === options.orientations[i]) {
         rowContent += ' selected';
@@ -69,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
    * When the script loads, fire off a call to the synced values.
    */
   chrome.storage.sync.get('rows', function (items) {
-    var row;
+    let row;
     if (items.rows.length < 1) {
       row = buildRow();
       options.rowForm.appendChild(row);
@@ -92,9 +97,9 @@ document.addEventListener('DOMContentLoaded', function () {
    * @returns {*[]}
    */
   function getValues() {
-    var values = [];
-    var rows = options.rowForm.querySelectorAll("fieldset");
-    for (var i = 0; i < rows.length; i++) {
+    const values = [];
+    const rows = options.rowForm.querySelectorAll("fieldset");
+    for (let i = 0; i < rows.length; i++) {
       values.push({
         'pattern': rows[i].querySelector(".pattern").value,
         'orientation': rows[i].querySelector(".orientation").value,
@@ -108,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
    * Save retrieved values
    */
   function saveValues() {
-    var values = getValues();
+    const values = getValues();
     chrome.storage.sync.set({'rows': values}, function () {
     });
   }
@@ -126,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector("#add-row").addEventListener('click', function (evt) {
     evt.preventDefault();
 
-    var row = buildRow();
+    const row = buildRow();
     options.rowForm.appendChild(row);
   }, false);
 
@@ -143,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * Drag and drop rows.
    */
-  var srcElem = null;
+  let srcElem = null;
 
   /**
    * When a draggable element is clicked and held.
@@ -161,14 +166,14 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * When a dragged element invades another element's space.
    */
-  options.rowForm.addEventListener('dragenter', function (evt) {
+  options.rowForm.addEventListener('dragenter', function () {
     this.classList.add('over');
   }, false);
 
   /**
    * When the dragged element leaves another element's airspace.
    */
-  options.rowForm.addEventListener('dragleave', function (evt) {
+  options.rowForm.addEventListener('dragleave', function () {
     this.classList.remove('over');
   }, false);
 
@@ -189,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // If dropped where it was, do nothing. Otherwise let's invert the elements.
     if (srcElem !== evt.target.closest('fieldset')) {
-      var thisElem = evt.target.closest('fieldset');
+      const thisElem = evt.target.closest('fieldset');
       thisElem.classList.remove('over');
 
       srcElem.innerHTML = thisElem.innerHTML;
@@ -205,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
   options.rowForm.addEventListener('change', function (evt) {
     // Ensure selected dropdowns save state when dragged.
     if (evt.target.localName === "select") {
-      var selectNode = evt.target,
+      const selectNode = evt.target,
         selectedElement = selectNode.selectedIndex;
       selectNode.innerHTML = selectNode.innerHTML.replace(/selected(=\".*?\")?/, '');
       selectNode[selectedElement].setAttribute("selected", "true");
@@ -214,4 +219,3 @@ document.addEventListener('DOMContentLoaded', function () {
     saveValues();
   }, false);
 });
-
