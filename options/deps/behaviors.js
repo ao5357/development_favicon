@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded',function() {
    * Listen for remove xs.
    */
   options.rowForm.addEventListener('click', function(evt) {
-    if (evt.toElement.classList[0] === 'remove') {
-      options.rowForm.removeChild(evt.toElement.parentNode);
+    if (evt.target.classList[0] === 'remove') {
+      options.rowForm.removeChild(evt.target.parentNode);
       saveValues();
     }
   }, false);
@@ -138,12 +138,12 @@ document.addEventListener('DOMContentLoaded',function() {
 
   options.rowForm.addEventListener('dragstart', function(evt) {
     evt.dataTransfer.effectAllowed = 'move';
-    evt.dataTransfer.setData('text/html', evt.srcElement.innerHTML);
-    srcElem = evt.srcElement;
+    evt.dataTransfer.setData('text/html', evt.target.innerHTML);
+    srcElem = evt.target;
   }, false);
 
   options.rowForm.addEventListener('dragenter', function(evt) {
-    var targetElement = findParentFieldset(evt.srcElement);
+    var targetElement = findParentFieldset(evt.target);
 
     if (targetElement) {
       targetElement.classList.add('over');
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded',function() {
   }, false);
 
   options.rowForm.addEventListener('dragleave', function(evt) {
-    var targetElement = findParentFieldset(evt.srcElement);
+    var targetElement = findParentFieldset(evt.target);
 
     if (targetElement) {
       targetElement.classList.remove('over');
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded',function() {
   }, false);
 
   options.rowForm.addEventListener('drop', function(evt) {
-    var targetElement = findParentFieldset(evt.srcElement);
+    var targetElement = findParentFieldset(evt.target);
 
     if (targetElement) {
       targetElement.classList.remove('over');
@@ -178,8 +178,8 @@ document.addEventListener('DOMContentLoaded',function() {
    */
   options.rowForm.addEventListener('change', function(evt){
     // Ensure selected dropdowns save state when dragged.
-    if (evt.srcElement.localName === "select") {
-      var selectNode = evt.srcElement,
+    if (evt.target.localName === "select") {
+      var selectNode = evt.target,
           selectedElement = selectNode.selectedIndex;
       selectNode.innerHTML = selectNode.innerHTML.replace(/selected(=\".*?\")?/, '');
       selectNode[selectedElement].setAttribute("selected", "true");
