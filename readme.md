@@ -22,6 +22,16 @@ Stuff like that.
 
 It's written to be as asynchronous, event-driven, and resource-light as possible.
 
+## Privacy and support
+
+This project has some extra documents about privacy and support:
+
+  * [Privacy policy](privacy-policy.md)
+  * [Support](.github/SUPPORT.md)
+  * [Code of conduct](.github/CODE_OF_CONDUCT.md)
+  * [Contributing](.github/CONTRIBUTING.md)
+  * [Security](.github/SECURITY.md)
+
 ## Development
 
 If you'd like to fix bugs, add features, improve performance, or otherwise contribute to the project, I'm very
